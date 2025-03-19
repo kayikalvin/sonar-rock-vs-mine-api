@@ -4,6 +4,15 @@ import numpy as np
 import joblib
 
 app = FastAPI()
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change "*" to your frontend URL for better security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Load the trained model
 model = joblib.load("model.pkl")
